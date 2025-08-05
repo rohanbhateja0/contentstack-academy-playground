@@ -98,6 +98,30 @@ export const getAllComposableHeros = async (entryUrl) => {
     return response[0];
 };
 
+export const getAllMarvelActors = async (entryUrl) => {
+    const response = await Stack.getEntryByUrl({
+        contentTypeUid: "marvel_actor_gallary",
+        entryUrl,
+        referenceFieldPath: ["marvel_actors"],
+        jsonRtePath: ["marvel_actors.description"],
+    });
+
+    liveEdit && addEditableTags(response, "marvel_actor_gallary", true);
+    return response[0];
+};
+
+export const getAllMarvelActorSingleRes = async (entryUrl) => {
+    const response = await Stack.getEntryByUrl({
+        contentTypeUid: "marvel_actor",
+        entryUrl,
+        referenceFieldPath: ["home_world"],
+        jsonRtePath: ["description"],
+    });
+
+    liveEdit && addEditableTags(response[0], "marvel_actor", true);
+    return response[0];
+};
+
 export const getComposableHeroHomeWorld = async () => {
     const response = await Stack.getEntry({
         contentTypeUid: "character",

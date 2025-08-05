@@ -15,15 +15,17 @@ type Banner = {
   call_to_action: Action;
   banner_image: Image;
   $: AdditionalParam;
+  hero_banner: Banner;
 }
 
 type BannerProps = {
   banner: Banner;
+  hero_banner?: Banner;
 }
 
 export default function HeroBanner(props: BannerProps) {
 
-  const banner = props.banner;
+  const banner = props.banner.hero_banner ?? props.banner;
 
   return (
     <div
@@ -56,7 +58,7 @@ export default function HeroBanner(props: BannerProps) {
         ) : (
           ''
         )}
-        {banner.call_to_action.title && banner.call_to_action.href ? (
+        {banner?.call_to_action && banner?.call_to_action.title && banner.call_to_action.href ? (
           <Link legacyBehavior href={banner?.call_to_action.href}>
             <a className='btn tertiary-btn' {...banner.call_to_action.$?.title}>
               {banner?.call_to_action.title}
