@@ -15,17 +15,15 @@ type Banner = {
   call_to_action: Action;
   banner_image: Image;
   $: AdditionalParam;
-  hero_banner: Banner;
 }
 
 type BannerProps = {
   banner: Banner;
-  hero_banner?: Banner;
 }
 
 export default function HeroBanner(props: BannerProps) {
 
-  const banner = props.banner.hero_banner ?? props.banner;
+  const banner = props.banner;
 
   return (
     <div

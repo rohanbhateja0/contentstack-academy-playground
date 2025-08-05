@@ -46,9 +46,6 @@ export default function MarvelActors() {
     return (
         <>
             {getBanner?.seo && getBanner.seo.enable_search_indexing && metaData(getBanner.seo)}
-            {getBanner?.hero_banner_modular_block && getBanner.hero_banner_modular_block.length > 0 && (
-                <HeroBanner banner={getBanner.hero_banner_modular_block[0]} />
-            )}
             <GalleryReact
                 data={posts}
                 heading={getBanner?.heading}
